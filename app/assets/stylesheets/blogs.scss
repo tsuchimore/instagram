@@ -1,0 +1,45 @@
+// Place all the styles related to the blogs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper{
+    background-color: #efefef;
+}
+.middle{
+    margin: 0 auto;
+    max-width: 600px;
+
+}
+.article{
+    margin-bottom: 60px;
+}
+.color{
+    border: 1px solid #bbb;
+    background-color: #efefef;
+
+}
+.poster{
+    height: 64px;
+    padding: 14px 21px;
+    background-color: #fff;
+    border-bottom: 1px solid #bbb;
+}
+
+.pic{
+    width: 100%;
+}
+.role_pic{
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+.content{
+    font-size: 16px;
+    padding: 10px 24px;
+    background-color: #fff;
+    border-bottom: 1px solid #bbb;
+}
+
+.btn-box{
+    padding: 10px 24px;
+    background-color: #fff;
+    border-bottom: 1px solid #bbb;
+}

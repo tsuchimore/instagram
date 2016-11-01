@@ -1,0 +1,27 @@
+<section class="middle">
+  <p><%= notice %></p>
+  <% @blogs.each do |blog| %>
+
+
+
+  <div class="article">
+    <article class="color">
+      <header class="poster">
+        <a class="role" style="width: 30px; height: 30px;"><img class="role_user" style="width: 30px; height: 30px;" src="<%= asset_path "test1.jpg" %>"></a>
+        <a class="user">user</a>
+      </header>
+      <div class="picture">
+        <img class="role_pic" src="<%= asset_path "test1.jpg" %>">
+      </div>
+      <div class="content">
+        投稿内容<br>
+        <p><%= blog.content %></p>
+      </div>
+      <div class="btn-box">
+        <%= link_to "編集", edit_blog_path(blog.id),class: 'btn btn-default btn-sm btn-success' %>
+        <%= link_to "削除", blog_path(blog.id), method: :delete, data:{confirm:"本当によろしいですか？"}, class: 'btn btn-default' %>
+      </div>
+    </article>
+  </div>
+  <% end %>
+</section>
