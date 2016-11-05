@@ -1,5 +1,5 @@
 <section class="middle">
-  <p><%= notice %></p>
+  <p class="flash"><%= notice %><%= alert %></p>
   <% @blogs.each do |blog| %>
 
 
@@ -7,15 +7,21 @@
   <div class="article">
     <article class="color">
       <header class="poster">
-        <a class="role" style="width: 30px; height: 30px;"><img class="role_user" style="width: 30px; height: 30px;" src="<%= asset_path "test1.jpg" %>"></a>
-        <a class="user">user</a>
+        <div class="role_user">
+          <%= profile_img(blog.user) if profile_img(blog.user) %>
+        </div>
+
+        <a class="user"><%= blog.user.name %></a>
       </header>
       <div class="picture">
-        <img class="role_pic" src="<%= asset_path "test1.jpg" %>">
+        <% if blog.image? %>
+        <div class="role_pic">
+          <img class="role_pic" src="<%= blog.image.url %>"> 
+        </div>
+      <% end %>
       </div>
       <div class="content">
-        投稿内容<br>
-        <p><%= blog.content %></p>
+        <p><span class="name"><%= blog.user.name %></span>  <%= blog.content %></p>
       </div>
       <div class="btn-box">
         <%= link_to "編集", edit_blog_path(blog.id),class: 'btn btn-default btn-sm btn-success' %>

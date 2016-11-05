@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
   def index
     @blogs = Blog.all
   end
@@ -10,11 +11,10 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blogs_params)
+    @blog.user_id = current_user.id
     if @blog.save
-      # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
-      redirect_to root_path, notice: "ブログを作成しました！"
+      redirect_to blogs_path, notice: "ブログを作成しました！"
     else
-      # 入力フォームを再描画します。
       render 'new'
     end
   end
@@ -37,7 +37,7 @@ class BlogsController < ApplicationController
   
   private
     def blogs_params
-      params.require(:blog).permit(:content)
+      params.require(:blog).permit(:content, :image, :image_cache, :remove_image)
     end
     
     def set_blog

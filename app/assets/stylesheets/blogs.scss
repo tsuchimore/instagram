@@ -1,6 +1,7 @@
 // Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .wrapper{
     background-color: #efefef;
 }
@@ -8,6 +9,10 @@
     margin: 0 auto;
     max-width: 600px;
 
+}
+header {
+  width: 100%;
+  background-color: #fff;
 }
 .article{
     margin-bottom: 60px;
@@ -23,13 +28,29 @@
     background-color: #fff;
     border-bottom: 1px solid #bbb;
 }
-
+.picture{
+    width:100%;
+}
 .pic{
     width: 100%;
+}
+.role_user{
+    float: left;
+    width: 30px;
+    height: 30px;
+}
+.user{
+    float: left;
+    padding-left: 10px;
+    padding-top: 5px;
 }
 .role_pic{
     width: 100%;
     border-bottom: 1px solid #eee;
+}
+.name{
+    font-size: 12px;
+    padding-right: 2px;
 }
 .content{
     font-size: 16px;
@@ -42,4 +63,17 @@
     padding: 10px 24px;
     background-color: #fff;
     border-bottom: 1px solid #bbb;
+}
+
+.flash {
+  color: white;
+  padding-top: 10px;
+}
+.alert,.alert-danger{
+  ul{
+    padding: 0;
+    li {
+      list-style-type: none;
+    }
+  }
 }

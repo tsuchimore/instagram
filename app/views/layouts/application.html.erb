@@ -27,7 +27,13 @@
       <ul class="nav navbar-nav">
         <li><%= link_to "ホーム", root_path %></li>
         <li><%= link_to "お気に入り", root_path %></li>
-        <li><%= link_to "マイページ", root_path %></li>
+        <li><%= link_to "マイページ", edit_user_registration_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path  %></li>
+          <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+        <% end %>
       </ul>
 
       <form class="navbar-form navbar-right" role="search">

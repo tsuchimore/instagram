@@ -1,0 +1,29 @@
+<%= form_for(@blog) do |f| %>
+<%= f.error_messages! %>
+
+<%= f.label :内容 %>
+<%= f.text_field :content, class: 'form-control' %>
+<br>
+  <!-- 追加箇所 開始 -->
+<div class="field">
+  <% if @blog.image? %>
+    <div class="thumbnail">
+      <%= image_tag @blog.image.url %>
+    </div>
+  <% end %><br>
+  <%= f.label :image %><br>
+  <%= f.file_field :image %>
+  <%= f.hidden_field :image_cache %>
+</div>
+<div class="field">
+  <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+  <% if @blog.persisted? && @blog.image? %>
+    <label>
+      <%= f.check_box :remove_image %>
+      画像を削除
+    </label>
+  <% end %>
+  </div>
+  <!-- 追加箇所 終了 -->
+<%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+<% end %>
