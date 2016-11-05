@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :confirmable
   has_many :blogs
   mount_uploader :avatar, AvatarUploader #deviseの設定配下に追記
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
