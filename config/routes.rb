@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root 'blogs#index'
   resources :blogs
   devise_for :users, controllers: {
     registrations: "users/registrations",
