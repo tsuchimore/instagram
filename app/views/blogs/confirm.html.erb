@@ -1,0 +1,17 @@
+<h3>以下の内容で、送信する。</h3>
+
+<%= form_for(@blog) do |f| %>
+  <%= f.hidden_field :content %>
+  <%= f.hidden_field :image_cache %>
+  <p>本文:<%= @blog.content %></p>
+  <div class="thumbnail">
+    <%= image_tag @blog.image.url %>
+  </div>
+  <%= f.submit "登録する" %>
+<% end %>
+
+<%= form_for(@blog, url: new_blog_path, method: 'get') do |f| %>
+  <%= f.hidden_field :content %>
+  <%= f.hidden_field :image_cache %>
+  <%= f.submit "もどる", name: 'back' %>
+<% end %>

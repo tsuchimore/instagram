@@ -3,10 +3,15 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!
   def index
     @blogs = Blog.all
+
   end
-  
   def new
-    @blog = Blog.new
+    if params[:back]
+      @blog = Blog.new(blogs_params)
+    else
+      @blog = Blog.new
+      
+    end
   end
 
  def create
@@ -19,29 +24,27 @@ class BlogsController < ApplicationController
       render action: 'new'
     end
   end
-
   def edit
-    @blog = Blog.find(params[:id])
+
   end
-  
   def update
-    @blog = Blog.find(params[:id])
     @blog.update(blogs_params)
-    redirect_to root_path
+    redirect_to blogs_path
   end
-  
   def destroy
-    @blog = Blog.find(params[:id])
     @blog.destroy
-    redirect_to root_path
+    redirect_to blogs_path    
   end
   
+  def confirm
+    @blog = Blog.new(blogs_params)
+    render :new if @blog.invalid?
+  end
   private
-    def blogs_params
-      params.require(:blog).permit(:content, :image, :image_cache, :remove_image)
-    end
-    
-    def set_blog
-      @blog = Blog.find(params[:id])
-    end
+  def blogs_params
+    params.require(:blog).permit(:content, :image, :image_cache, :remove_image)
+  end
+  def set_blog
+    @blog = Blog.find(params[:id])
+  end
 end
