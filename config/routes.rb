@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+
+
   root 'welcome#index'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :blogs, only: [:index, :new, :create, :edit, :update ,:destroy] do
+  resources :blogs do
+    resources :comments
     collection do
       post :confirm
     end
@@ -13,6 +16,15 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
+  resources :users, only: [:index, :edit, :update] do
+    member do
+      get 'followers'
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
+  resources :conversations do
+    resources :messages
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,13 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= profile_img(@user) %>
+        <%= @user.name %>
+      </h1>
+
+    <span><%= render "followings" %></span>
+    <span><%= render "followers" %></span>
+    </section>
+  </aside>
+</div>

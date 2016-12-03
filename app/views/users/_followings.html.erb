@@ -1,0 +1,11 @@
+<h1>フォロー</h1>
+<ul style="list-style:none;">
+<% @followings.each do |following| %>
+
+
+    <li class="clearfix"> <!-- clearfix は奇麗に改行するためのおまじない -->
+        <%= profile_img(following) %>
+      <span><%= link_to following.name %>さん</span>
+    </li>
+<% end %>
+</ul>
