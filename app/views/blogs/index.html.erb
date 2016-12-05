@@ -1,4 +1,6 @@
 <section class="middle">
+
+
   <p class="flash"><%= notice %><%= alert %></p>
   <% @blogs.each do |blog| %>
 
@@ -13,6 +15,11 @@
 
         <a class="user"><%= blog.user.name %></a>
       </header>
+      <div class="content">
+        <h4><strong><%= blog.content %></strong></h4>
+        </p>
+
+      </div>
       <div class="picture">
         <% if blog.image? %>
         <div class="role_pic">
@@ -20,16 +27,11 @@
         </div>
       <% end %>
       </div>
-      <div class="content">
-        <p><span class="name"><%= blog.user.name %></span>
-        <%= link_to blog_path(blog) do %>
-        <h4><strong><%= blog.content %></strong></h4>
-        <% end %>
-        </p>
-      </div>
+
       <div class="btn-box">
         <%= link_to "編集", edit_blog_path(blog.id),class: 'btn btn-default btn-sm btn-success' %>
         <%= link_to "削除", blog_path(blog.id), method: :delete, data:{confirm:"本当によろしいですか？"}, class: 'btn btn-default' %>
+        <%= link_to "コメントする", blog_path(blog),class: 'btn btn-default' %>
       </div>
     </article>
   </div>

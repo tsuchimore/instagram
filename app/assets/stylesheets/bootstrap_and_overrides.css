@@ -6,11 +6,20 @@
   =require twitter-bootstrap-static/fontawesome
   */
   
-  header {
+header {
   width: 100%;
-  background-color: #fff;
+  background-color: #3b5998;
 }
 .navbar-default {
-background-color: #fff;
-border-color: #ccc;
+  background-color: #3b5998;
+  border-color: #eee;
+}
+.navbar-default .navbar-nav > li > a {
+color: #eee;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+color: #fff;
+background-color: transparent;
 }

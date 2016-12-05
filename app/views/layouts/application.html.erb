@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Instagram</title>
+  <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+  <title>Facebook</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <% if user_signed_in? %>
+    <script>
+      var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+        encrypted: true
+      });
+
+      var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
+      channel.bind('comment_created', function(data) {
+        alert(data.message);
+      });
+      channel.bind('notification_created', function(data) {
+        $('#unread_count').html(data.unread_counts);
+      });
+    </script>
+  <% end %>
 </head>
 <body>
 <div class="wrapper">  
@@ -24,11 +40,15 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Instagram", blogs_path %></li>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "ホーム", blogs_path %></li>
         <li><%= link_to "マイページ", edit_user_registration_path %></li>
-        <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
+        <li><%= link_to '友達一覧', users_path if user_signed_in? %></li>
         <li><%= link_to "メッセージ", conversations_path %></li>
+        <li><%= link_to  notifications_index_path, class: "navbar-brand" do %>
+          <i class="fa fa-bell fa-1x"><span id="unread_count"><%= @notifications_count %></span></i>
+        <% end %>
+        </li>
         <% if user_signed_in? %>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <% else %>
@@ -38,7 +58,7 @@
         <% end %>
       </ul>
 
-      <form class="navbar-form navbar-right" role="search">
+      <form class="navbar-form " role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="キーワード検索">
         </div>
