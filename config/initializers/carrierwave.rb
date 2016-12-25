@@ -12,10 +12,10 @@ CarrierWave.configure do |config|
 
   case Rails.env
     when 'production'
-      config.fog_directory = 'face-production'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/face-production'
+      config.fog_directory = 'instagram1-production'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/instagram1-production'
     when 'development'
-      config.fog_directory = 'face-development'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/face-development'
+      config.fog_directory = 'instagram-development'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/instagram1-development'
   end
 end
