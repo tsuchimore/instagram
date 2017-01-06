@@ -15,7 +15,7 @@ CarrierWave.configure do |config|
       config.fog_directory = 'instagram1-production'
       config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/instagram1-production'
     when 'development'
-      config.fog_directory = 'instagram-development'
+      config.fog_directory = 'instagram1-development'
       config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/instagram1-development'
   end
 end
