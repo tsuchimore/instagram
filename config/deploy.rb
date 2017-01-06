@@ -4,7 +4,7 @@ lock '3.6.0'
 set :application, 'instagram'
 
 # cloneするgitのレポジトリ（xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
-set :repo_url, 'https://github.com/tsuchimore/face.git'
+set :repo_url, 'https://github.com/tsuchimore/instagram.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, ENV['BRANCH'] || 'master'
