@@ -23,7 +23,7 @@
       <div class="picture">
         <% if blog.image? %>
         <div class="role_pic">
-          <img class="role_pic" src="<%= blog.image.url %>"> 
+          <%= image_tag blog.image.url, class: "role_pic" %>
         </div>
       <% end %>
       </div>
