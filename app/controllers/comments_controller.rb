@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -39,9 +40,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit
 
-  end
 
   def destroy
     @comment.destroy
