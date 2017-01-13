@@ -24,7 +24,7 @@ default: &default
 
 development:
   <<: *default
-  database: instagram_development
+  database: instagram1_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: instagram_production
+  database: instagram1_production
   username: instagram
   password: <%= ENV['INSTAGRAM_DATABASE_PASSWORD'] %>
