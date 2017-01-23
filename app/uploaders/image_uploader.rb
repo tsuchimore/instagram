@@ -7,7 +7,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :fog
 
   def cache_dir
-    "config.cache_dir = 'tmp/image-cache'"
+    "config.cache_dir = 'tmp/uploads'"
   end
 
   def fog_attributes
